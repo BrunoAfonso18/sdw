@@ -8,8 +8,8 @@ def random_ponderado(x, min_val=0, max_val=10, desvio=2):
             return round(valor, 1)
 
 # especificar caminhos corretos dos csvs
-df_reviews = pd.read_csv("Airline_review.csv")
-df_flights = pd.read_csv("flights_sample_3m.csv")
+df_reviews = pd.read_csv("reviews/Airline_review.csv")
+df_flights = pd.read_csv("viagens/flights_sample_3m.csv")
 
 df_reviews["Overall_Rating"] = pd.to_numeric(df_reviews["Overall_Rating"], errors="coerce")
 
@@ -25,6 +25,6 @@ def gerar_rating(airline):
 df_flights["Rating"] = df_flights["AIRLINE"].apply(gerar_rating)
 
 # mudar o nome para o csv de destino
-df_flights.to_csv("flights_sample_3m_ratings.csv", index=False)
+df_flights.to_csv("viagens/flights_sample_3m_ratings.csv", index=False)
 
 print("Rating gerado e guardado no ficheiro 'flights_sample_3m_ratings.csv'")
